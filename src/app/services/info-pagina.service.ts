@@ -10,21 +10,33 @@ export class InfoPaginaService {
 
   info: InfoPagina = {};
   cargada = false;
+  equipo: any[] = [];
 
   constructor(
     private http: HttpClient
   ) {
-    console.log('servicio de infoPagina listo');
+    this.cargarInfo();
+    this.cargarEquipo();
+  }
 
+  private cargarInfo() {
+    // console.log('servicio de infoPagina listo');
     // leer el archivo JSON
-
     this.http.get('assets/data/data-pagina.json')
     .subscribe((resp: InfoPagina) => {
-
       this.cargada = true;
       this.info = resp;
-      console.log(resp);
-      //console.log(resp['twitter']);
+      // console.log(resp);
+    });
+  }
+
+  private cargarEquipo(){
+    // console.log('servicio de firebase listo');
+    // leer el archivo JSON
+    this.http.get('https://newagent-ncmqjy.firebaseio.com/equipo.json')
+    .subscribe((resp: any) => {
+      this.equipo = resp;
+      // console.log(resp);
     });
   }
 }
