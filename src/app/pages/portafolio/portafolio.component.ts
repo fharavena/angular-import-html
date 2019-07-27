@@ -9,7 +9,7 @@ import { ProductosService } from '../../services/productos.service';
 export class PortafolioComponent implements OnInit {
 
   constructor(
-    private productoService: ProductosService
+    public productoService: ProductosService
   ) { }
 
   ngOnInit() {
